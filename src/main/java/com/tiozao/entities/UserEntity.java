@@ -3,6 +3,7 @@ package com.tiozao.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public class UserEntity implements Serializable {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<EmailEntity> emails;
+    private List<EmailEntity> emails = new ArrayList<EmailEntity>();
 
     @ManyToMany
     @JoinTable(name="user_roles", joinColumns=

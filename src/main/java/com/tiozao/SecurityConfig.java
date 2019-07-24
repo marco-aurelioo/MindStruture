@@ -25,10 +25,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+       // http.headers().frameOptions().disable();
         http
-                .csrf().disable()
-                .authorizeRequests()
+                .csrf()
+                .disable()
 
+                .authorizeRequests()
                     .antMatchers(
                         "/resources/**",
                         "/cadastro",
@@ -36,17 +38,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/js/**",
                         "/vendor/**")
-
                     .permitAll()
-                    .anyRequest()
-                    .authenticated()
+
+                .anyRequest().authenticated()
+
                 .and()
                     .formLogin()
-                    .loginPage("/login")
-                .permitAll()
-                    .and()
-                .logout()
-                .permitAll();
+                    .loginPage("/login").permitAll()
+                .and()
+                    .logout().permitAll();
     }
 
     @Bean

@@ -7,6 +7,6 @@ public interface UserService {
 
     void save(UserModel user);
 
-    UserEntity findByLogin(String login);
+    UserEntity findByEmail(String login);
 
 }

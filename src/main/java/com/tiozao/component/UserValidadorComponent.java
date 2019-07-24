@@ -24,11 +24,9 @@ public class UserValidadorComponent {
     public void validate(Object o, Errors errors) {
         UserModel user = (UserModel) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "NotEmpty");
-        if (user.getLogin().length() < 6 || user.getLogin().length() > 32) {
-            errors.rejectValue("username", "Size.userForm.username");
-        }
-        if (userService.findByLogin(user.getLogin()) != null) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+
+        if (userService.findByEmail(user.getEmail()) != null) {
             errors.rejectValue("login", "Duplicate.userForm.username");
         }
 

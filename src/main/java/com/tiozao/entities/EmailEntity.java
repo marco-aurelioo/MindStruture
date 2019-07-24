@@ -49,4 +49,13 @@ public class EmailEntity implements Serializable {
     public void setPrincipal(boolean principal) {
         this.principal = principal;
     }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
 }

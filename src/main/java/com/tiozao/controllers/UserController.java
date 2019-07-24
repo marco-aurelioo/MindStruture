@@ -40,9 +40,9 @@ public class UserController {
 
         userService.save(userForm);
 
-        securityService.autoLogin(userForm.getName(), userForm.getPassword());
+        securityService.autoLogin(userForm.getEmail(), userForm.getPassword());
 
-        return "redirect:/welcome";
+        return "redirect:/home";
     }
 
     @GetMapping("/login")

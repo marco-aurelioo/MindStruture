@@ -16,13 +16,15 @@ import java.util.Set;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String login) {
-        UserEntity user = userRepository.findByLogin(login);
-        if (user == null) throw new RuntimeException(login);
+    public UserDetails loadUserByUsername(String email) {
+        UserEntity user = userRepository.findByEmail(email);
+        if (user == null)
+            throw new RuntimeException(email);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (RoleEntity role : user.getRoles()){

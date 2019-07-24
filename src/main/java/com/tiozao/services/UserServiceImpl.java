@@ -1,8 +1,10 @@
 package com.tiozao.services;
 
+import com.tiozao.entities.EmailEntity;
 import com.tiozao.entities.RoleEntity;
 import com.tiozao.entities.UserEntity;
 import com.tiozao.model.UserModel;
+import com.tiozao.repositories.EmailRepository;
 import com.tiozao.repositories.RoleRepository;
 import com.tiozao.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,11 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private EmailRepository emailRepository;
+
+    @Autowired
     private RoleRepository roleRepository;
+
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -29,16 +35,22 @@ public class UserServiceImpl implements UserService {
         user.setRoles(new HashSet<RoleEntity>(roleRepository.findAll()));
 
         UserEntity entity = new UserEntity();
-        entity.setLogin(user.getLogin());
         entity.setName(user.getName());
         entity.setPassword(user.getPassword());
         entity.setRoles(user.getRoles());
 
+        EmailEntity email = new EmailEntity();
+        email.setEmail(user.getEmail());
+        email.setUser(entity);
+        email.setPrincipal(true);
+        entity.getEmails().add(email);
+
         userRepository.save(entity);
+
     }
 
     @Override
-    public UserEntity findByLogin(String login) {
-        return userRepository.findByLogin(login);
+    public UserEntity findByEmail(String login) {
+        return userRepository.findByEmail(login);
     }
 }
