@@ -45,12 +45,13 @@ public class UserServiceImpl implements UserService {
         email.setPrincipal(true);
         entity.getEmails().add(email);
 
+        entity.setRoles(new HashSet<RoleEntity>(roleRepository.findAll()));
         userRepository.save(entity);
 
     }
 
     @Override
-    public UserEntity findByEmail(String login) {
-        return userRepository.findByEmail(login);
+    public UserEntity findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }

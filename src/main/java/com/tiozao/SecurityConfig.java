@@ -25,7 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       // http.headers().frameOptions().disable();
+        http.headers().frameOptions().disable();
         http
                 .csrf()
                 .disable()
@@ -40,7 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/vendor/**")
                     .permitAll()
 
-                .anyRequest().authenticated()
+                .anyRequest()
+                    .authenticated()
 
                 .and()
                     .formLogin()
