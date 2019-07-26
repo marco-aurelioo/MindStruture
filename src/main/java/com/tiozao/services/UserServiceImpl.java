@@ -31,12 +31,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserModel user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(new HashSet<RoleEntity>(roleRepository.findAll()));
 
         UserEntity entity = new UserEntity();
         entity.setName(user.getName());
-        entity.setPassword(user.getPassword());
+        entity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         entity.setRoles(user.getRoles());
 
         EmailEntity email = new EmailEntity();
