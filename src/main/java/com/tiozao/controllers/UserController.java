@@ -47,22 +47,12 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
-        model.addAttribute("user", new UserModel());
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
+            model.addAttribute("error", "Eita seu login ou senha deram errado !?");
         if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
+            model.addAttribute("message", "Volte sempre seu logout foi efetuado com sucesso!!");
         return "login";
     }
 
-    @PostMapping("/login")
-    public String postLogin(@ModelAttribute("user") UserModel userForm, BindingResult bindingResult) {
 
-        securityService.autoLogin(userForm.getEmail(), userForm.getPassword());
-
-        return "home";
-
-    }
 }

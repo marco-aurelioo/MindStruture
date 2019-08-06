@@ -6,20 +6,12 @@ import java.util.Set;
 
 public class UserModel {
 
-    private String login;
+
     private String name;
     private String email;
     private String password;
     private String confirmPassword;
     private Set<RoleEntity> roles;
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     public String getName() {
         return name;
