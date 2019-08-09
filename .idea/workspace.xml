@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2c77777-87c8-4dd5-a368-c9b6e5114df8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/component/UserValidadorComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/component/UserValidadorComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/EmailEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/model/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/EmailRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/SecurityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/registration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/usuario.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/usuario.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="HTML File" />
         <option value="Interface" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -173,19 +161,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/component/UserValidadorComponent.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/controllers/UserController.java</url>
           <line>75</line>
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java</url>
-          <line>55</line>
-          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
