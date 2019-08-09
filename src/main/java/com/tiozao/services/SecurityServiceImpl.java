@@ -14,14 +14,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SecurityServiceImpl implements SecurityService{
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
     private UserDetailsService userDetailsService;
-
-    //@Autowired
-    //private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     private static final Logger logger = LoggerFactory.getLogger(SecurityServiceImpl.class);
 
@@ -31,7 +29,6 @@ public class SecurityServiceImpl implements SecurityService{
         if (userDetails instanceof UserDetails) {
             return ((UserDetails)userDetails).getUsername();
         }
-
         return null;
     }
 

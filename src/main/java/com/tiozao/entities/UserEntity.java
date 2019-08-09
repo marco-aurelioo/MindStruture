@@ -1,25 +1,40 @@
 package com.tiozao.entities;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name="user")
 public class UserEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String login;
-    private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<EmailEntity> emails = new ArrayList<EmailEntity>();
+    @Id
+    @GeneratedValue(generator =  "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(name = "id", updatable = false, nullable = false)
+    private UUID id;
+    private String name;
+    private String email;
+    private String password;
+    private String avatarUrl;
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="user_roles", joinColumns=
@@ -28,11 +43,11 @@ public class UserEntity implements Serializable {
     private Set<RoleEntity> roles;
 
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -44,30 +59,12 @@ public class UserEntity implements Serializable {
         this.name = name;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-
-
-    public List<EmailEntity> getEmails() {
-        return emails;
-    }
-
-    public void setEmails(List<EmailEntity> emails) {
-        this.emails = emails;
     }
 
     public Set<RoleEntity> getRoles() {
@@ -79,4 +76,11 @@ public class UserEntity implements Serializable {
     }
 
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

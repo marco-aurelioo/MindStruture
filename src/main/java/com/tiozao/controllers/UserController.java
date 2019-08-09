@@ -11,6 +11,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class UserController {
@@ -31,10 +36,12 @@ public class UserController {
     }
 
     @PostMapping("/cadastro")
-    public String registration(@ModelAttribute("user") UserModel userForm, BindingResult bindingResult) {
-        userValidador.validate(userForm, bindingResult);
+    public String registration(@ModelAttribute("user") UserModel userForm,Model model) {
+        List<String> errors = new ArrayList<>();
+        userValidador.validate(userForm,errors);
 
-        if (bindingResult.hasErrors()) {
+        if (!errors.isEmpty()) {
+            model.addAttribute("errors",errors);
             return "register";
         }
 
@@ -42,7 +49,7 @@ public class UserController {
 
         securityService.autoLogin(userForm.getEmail(), userForm.getPassword());
 
-        return "redirect:/home";
+        return "redirect:/usuario";
     }
 
     @GetMapping("/login")
@@ -55,4 +62,22 @@ public class UserController {
     }
 
 
+    @GetMapping("/usuario")
+    public String getMeuCadastro(Model model){
+
+        model.addAttribute("user", userService.getSessionUser());
+
+        return "usuario";
+    }
+
+    @PostMapping("/usuario")
+    public String postMeuCadastro(@ModelAttribute("user") UserModel userForm, Model model){
+
+        List<String> errors = userService.updateUser(userForm);
+
+        model.addAttribute("user",userForm);
+        model.addAttribute("errors",errors);
+
+        return "usuario";
+    }
 }

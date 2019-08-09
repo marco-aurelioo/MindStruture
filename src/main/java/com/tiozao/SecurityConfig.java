@@ -38,7 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/js/**",
                         "/h2-console/*",
-                        "/vendor/**")
+                        "/vendor/**",
+                            "/usuario/**")
                     .permitAll()
 
                 .anyRequest()

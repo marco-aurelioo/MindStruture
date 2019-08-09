@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -21,22 +22,25 @@ public class UserValidadorComponent {
         return UserEntity.class.equals(aClass);
     }
 
-    public void validate(Object o, Errors errors) {
+    public void validate(Object o, List<String> errors) {
         UserModel user = (UserModel) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
-
+        if(user.getEmail().isEmpty()){
+            errors.add("Email invalido.");
+        }
+        if(user.getEmail().isEmpty()){
+            errors.add("senha vazia.");
+        }
         if (userService.findByEmail(user.getEmail()) != null) {
-            errors.rejectValue("login", "Duplicate.userForm.username");
+            errors.add("email ja existente na nossa base");
         }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {
-            errors.rejectValue("password", "Size.userForm.password");
+        if (user.getPassword().length() < 6 || user.getPassword().length() > 32) {
+            errors.add( "senha inválida tem que ter mais de 6 caracters");
         }
 
         if (!user.getConfirmPassword().equals(user.getPassword())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+            errors.add("confirmação de senha não corresponde a senha");
         }
     }
 

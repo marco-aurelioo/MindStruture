@@ -1,17 +1,19 @@
 package com.tiozao.services;
 
-import com.tiozao.entities.EmailEntity;
 import com.tiozao.entities.RoleEntity;
 import com.tiozao.entities.UserEntity;
 import com.tiozao.model.UserModel;
-import com.tiozao.repositories.EmailRepository;
 import com.tiozao.repositories.RoleRepository;
 import com.tiozao.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,11 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private EmailRepository emailRepository;
-
-    @Autowired
     private RoleRepository roleRepository;
-
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -36,13 +34,7 @@ public class UserServiceImpl implements UserService {
         entity.setName(user.getName());
         entity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         entity.setRoles(user.getRoles());
-
-        EmailEntity email = new EmailEntity();
-        email.setEmail(user.getEmail());
-        email.setUser(entity);
-        email.setPrincipal(true);
-        entity.getEmails().add(email);
-
+        entity.setEmail(user.getEmail());
         entity.setRoles(new HashSet<RoleEntity>(roleRepository.findAll()));
         userRepository.save(entity);
 
@@ -51,5 +43,39 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public UserModel getSessionUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return convertPrincipalToUserModel((UserDetails) principal);//
+    }
+
+    @Override
+    public List<String> updateUser(UserModel userForm) {
+        List<String> errors = new ArrayList<String>();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserEntity user = userRepository.findByEmail(((UserDetails) principal).getUsername());
+        user.setAvatarUrl(userForm.getAvatarUrl());
+        user.setName(userForm.getName());
+        try {
+            userRepository.save(user);
+        }catch(Exception e){
+            e.printStackTrace();
+            errors.add("Erro ao tentar salvar os dados.(usuario)");
+        }
+        return errors;
+    }
+
+
+    private UserModel convertPrincipalToUserModel(UserDetails principal) {
+        UserModel retorno = new UserModel();
+        if(principal == null)
+            return retorno;
+        UserEntity user = userRepository.findByEmail(principal.getUsername());
+        retorno.setName(user.getName());
+        retorno.setEmail(user.getEmail());
+        retorno.setAvatarUrl(user.getAvatarUrl());
+        return retorno;
     }
 }

@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class UserModel {
 
-
+    private String avatarUrl;
     private String name;
     private String email;
     private String password;
@@ -51,5 +51,13 @@ public class UserModel {
 
     public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }
