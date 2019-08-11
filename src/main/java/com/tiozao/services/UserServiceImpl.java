@@ -75,7 +75,11 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userRepository.findByEmail(principal.getUsername());
         retorno.setName(user.getName());
         retorno.setEmail(user.getEmail());
-        retorno.setAvatarUrl(user.getAvatarUrl());
+        if(user.getAvatarUrl() != null) {
+            retorno.setAvatarUrl(user.getAvatarUrl());
+        }else{
+            retorno.setAvatarUrl("../img/avatarDefault.png");
+        }
         return retorno;
     }
 }

@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/static/**",
                         "/css/**",
                         "/js/**",
+                        "/img/**",
                         "/h2-console/*",
                         "/vendor/**",
                             "/usuario/**")
@@ -47,7 +48,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                     .formLogin()
-                    .loginPage("/login").permitAll()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/usuario",true)
+                    .permitAll()
                 .and()
                     .logout().permitAll();
     }
