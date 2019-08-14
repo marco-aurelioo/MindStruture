@@ -5,10 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name="user")
@@ -40,7 +37,7 @@ public class UserEntity implements Serializable {
     @JoinTable(name="user_roles", joinColumns=
             {@JoinColumn(name="user_id")}, inverseJoinColumns=
             {@JoinColumn(name="role_id")})
-    private Set<RoleEntity> roles;
+    private Set<RoleEntity> roles = new HashSet<>();
 
 
     public UUID getId() {
@@ -68,6 +65,8 @@ public class UserEntity implements Serializable {
     }
 
     public Set<RoleEntity> getRoles() {
+        if(roles == null)
+            roles = new HashSet<>();
         return roles;
     }
 

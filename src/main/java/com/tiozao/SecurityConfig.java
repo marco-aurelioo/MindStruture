@@ -32,15 +32,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests()
                     .antMatchers(
-                        "/resources/**",
                         "/cadastro**",
                         "/static/**",
                         "/css/**",
                         "/js/**",
                         "/img/**",
                         "/h2-console/*",
-                        "/vendor/**",
-                            "/usuario/**")
+                        "/vendor/**")
                     .permitAll()
 
                 .anyRequest()

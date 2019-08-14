@@ -61,10 +61,8 @@ public class UserController {
         return "login";
     }
 
-
     @GetMapping("/usuario")
     public String getMeuCadastro(Model model){
-
         model.addAttribute("user", userService.getSessionUser());
 
         return "usuario";
@@ -72,12 +70,9 @@ public class UserController {
 
     @PostMapping("/usuario")
     public String postMeuCadastro(@ModelAttribute("user") UserModel userForm, Model model){
-
         List<String> errors = userService.updateUser(userForm);
-
         model.addAttribute("user",userForm);
         model.addAttribute("errors",errors);
-
         return "usuario";
     }
 }

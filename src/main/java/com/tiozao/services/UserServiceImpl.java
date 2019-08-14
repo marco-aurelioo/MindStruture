@@ -2,6 +2,7 @@ package com.tiozao.services;
 
 import com.tiozao.entities.RoleEntity;
 import com.tiozao.entities.UserEntity;
+import com.tiozao.exception.UserSessionNotFound;
 import com.tiozao.model.UserModel;
 import com.tiozao.repositories.RoleRepository;
 import com.tiozao.repositories.UserRepository;
@@ -35,9 +36,11 @@ public class UserServiceImpl implements UserService {
         entity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         entity.setRoles(user.getRoles());
         entity.setEmail(user.getEmail());
-        entity.setRoles(new HashSet<RoleEntity>(roleRepository.findAll()));
+        RoleEntity role = roleRepository.findByRole("USER");
+        if(role != null) {
+            entity.getRoles().add(role);
+        }
         userRepository.save(entity);
-
     }
 
     @Override
@@ -48,7 +51,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserModel getSessionUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return convertPrincipalToUserModel((UserDetails) principal);//
+        if(principal instanceof UserDetails) {
+            return convertPrincipalToUserModel((UserDetails) principal);//
+        }else{
+            UserModel user = new UserModel();
+            return user;
+        }
+
     }
 
     @Override

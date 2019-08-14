@@ -11,7 +11,7 @@ public class UserModel {
     private String email;
     private String password;
     private String confirmPassword;
-    private Set<RoleEntity> roles;
+    private Set<RoleEntity> roles ;
 
     public String getName() {
         return name;
