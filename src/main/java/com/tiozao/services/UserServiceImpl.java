@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService {
         entity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         entity.setRoles(user.getRoles());
         entity.setEmail(user.getEmail());
+        entity.setAvatarUrl(user.getAvatarUrl());
         RoleEntity role = roleRepository.findByRole("USER");
         if(role != null) {
             entity.getRoles().add(role);
@@ -54,7 +55,11 @@ public class UserServiceImpl implements UserService {
         if(principal instanceof UserDetails) {
             return convertPrincipalToUserModel((UserDetails) principal);//
         }else{
+            String[] face = ((String) principal).split("\\|");
+            UserEntity byEmail = userRepository.findByEmail(face[0]);
             UserModel user = new UserModel();
+            user.setAvatarUrl(byEmail.getAvatarUrl());
+            user.setName(face[1]);
             return user;
         }
 

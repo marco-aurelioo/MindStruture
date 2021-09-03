@@ -1,4 +1,4 @@
-package com.tiozao.services;
+package com.tiozao.services.security;
 
 public interface SecurityService {
 

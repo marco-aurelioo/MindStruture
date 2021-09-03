@@ -39,7 +39,6 @@ public class UserEntity implements Serializable {
             {@JoinColumn(name="role_id")})
     private Set<RoleEntity> roles = new HashSet<>();
 
-
     public UUID getId() {
         return id;
     }
@@ -73,7 +72,6 @@ public class UserEntity implements Serializable {
     public void setRoles(Set<RoleEntity> roles) {
         this.roles = roles;
     }
-
 
     public String getEmail() {
         return email;

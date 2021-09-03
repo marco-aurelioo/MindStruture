@@ -1,4 +1,4 @@
-package com.tiozao.services;
+package com.tiozao.services.security;
 
 import com.tiozao.entities.RoleEntity;
 import com.tiozao.entities.UserEntity;

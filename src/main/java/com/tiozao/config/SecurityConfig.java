@@ -1,4 +1,4 @@
-package com.tiozao;
+package com.tiozao.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -38,7 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/js/**",
                         "/img/**",
                         "/h2-console/*",
-                        "/vendor/**")
+                        "/vendor/**",
+                        "/webjars/**", "/admin/**", "/favicon.ico", "/resources/**", "/auth/**", "/signin/**", "/signup/**", "/disconnect/facebook"
+                    )
                     .permitAll()
 
                 .anyRequest()

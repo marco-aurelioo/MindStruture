@@ -6,12 +6,21 @@ import java.util.Set;
 
 public class UserModel {
 
+    private String id;
     private String avatarUrl;
     private String name;
     private String email;
     private String password;
     private String confirmPassword;
     private Set<RoleEntity> roles ;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
