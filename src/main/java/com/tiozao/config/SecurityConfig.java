@@ -37,9 +37,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/js/**",
                         "/img/**",
-                        "/h2-console/*",
+                        "/h2/*",
                         "/vendor/**",
-                        "/webjars/**", "/admin/**", "/favicon.ico", "/resources/**", "/auth/**", "/signin/**", "/signup/**", "/disconnect/facebook"
+                        "/webjars/**",
+                        "/admin/**", "/favicon.ico",
+                        "/resources/**", "/auth/**", "/signin/**", "/signup/**", "/disconnect/facebook"
                     )
                     .permitAll()
 

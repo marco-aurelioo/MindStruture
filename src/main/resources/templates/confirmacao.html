@@ -1,87 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt_br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Dados de usuarios.</title>
-
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}" type="text/css">
 
+    <script type = "text/javascript">
+
+        function confirmaAmizade() {
+            var msgId = document.getElementById('msgId').value;
+            $.ajax({
+                type: "POST",
+                url: "/amigos/confirmacao",
+                data: msgId,
+                success: function(data,status){
+                    alert('confirmação enviada com sucesso!');
+                }
+            }).fail(
+                function(){
+                    alert('falha ao confirmar solicitação de amizade.');
+                }
+            );
+        }
+    </script>
 </head>
-
 <body id="page-top">
-
 <!-- Page Wrapper -->
 <div id="wrapper">
-
     <div th:replace="~{../templates/fragments/menuEsquerdo :: menuEsquerdo}" ></div>
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
         <!-- Main Content -->
         <div id="content">
-
             <div th:replace="~{../templates/fragments/header :: header}"></div>
-
             <!-- Begin Page Content -->
             <div class="container-fluid">
-
                 <!-- Page Heading -->
-                <h1 class="h3 mb-1 text-gray-800">Dados do usuario</h1>
-                <p class="mb-4">Dados cadastrais do usuário.</p>
 
+                <h1 class="h3 mb-1 text-gray-800">Solicitações de amizade.</h1>
+                <p class="mb-4">Rede de amigos:</p>
                 <!-- Content Row -->
                 <div class="row">
-
                     <!-- Border Left Utilities -->
                     <div class="col-lg-12">
-
                         <div class="card mb-8 py-6 border-left-primary">
                             <div class="card-body">
-                                <form class="user"  th:action="@{/usuario}"  method="POST">
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-6 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Nome" th:field="*{user.name}">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12 mb-6 mb-sm-0">
-                                            <input type="text" class="form-control form-control-user" id="avatarUrl" placeholder="avatar" th:field="*{user.avatarUrl}">
-                                        </div>
-                                    </div>
-
-                                    <input type="submit" value="Salvar Cadastro." class="btn btn-primary btn-user ">
-                                </form>
-
-
+                                <label th:text="${user.name}"></label>
+                                <hr/>
+                                <div id="result" >
+                                    <div th:text="${msg.fromUser.name}"></div>
+                                    <form >
+                                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+                                            <div class="input-group">
+                                                <div class="input-group-append">
+                                                    <input type="hidden" th:value="${msg.id}" id="msgId" />
+                                                    <button class="btn btn-primary" type="button" onclick="confirmaAmizade()">
+                                                        <strong>Confirmar</strong>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </form>
+                                </div>
                             </div>
+                        </div>
+                        <div class="card mb-8 py-6 border-left-orange">
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- /.container-fluid -->
 
         </div>
         <!-- End of Main Content -->
-
         <div th:replace="~{../templates/fragments/footer :: footer}"></div>
-
     </div>
     <!-- End of Content Wrapper -->
-
 </div>
 <!-- End of Page Wrapper -->
 
@@ -90,18 +92,13 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
-
-
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="../js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>

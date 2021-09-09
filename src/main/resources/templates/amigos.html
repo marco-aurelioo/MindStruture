@@ -1,10 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_br" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Dados de usuarios.</title>
+    <!-- Custom fonts for this template-->
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet" th:href="@{/css/sb-admin-2.min.css}" type="text/css">
+    <link href="../js/lib/visjs/vis-network.min.css" rel="stylesheet" th:href="@{/js/lib/visjs/vis-network.min.css}" type="text/css">
+
+    <script src="../js/lib/visjs/vis.js"   type="text/javascript" ></script>
+    <script src="../js/lib/visjs/graph.js" type="text/javascript" ></script>
+
+    <script type = "text/javascript">
+        const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+        function findEmail() {
+            var email = document.getElementById('emailTxt').value;
+            var isValidEmail =  re.test(email);
+            alert(email);
+            if(isValidEmail){
+                alert(email+' vou mandar solicitação de amizade ');
+                $.ajax({
+                    type: "POST",
+                    url: "/amigos/solicitacao",
+                    data: email,
+                    success: function(data,status){
+                        alert('solicitação enviada com sucesso!');
+                    }
+                }).fail(
+                    function(){
+                        alert('falha ao mandar solicitação de amizade.');
+                    }
+                );
+            }else{
+                alert('necessário um email valido');
+            }
+        }
+
+         function findFriends() {
+            $.ajax({
+                type: "GET",
+                url: "/amigos/meus-amigos/json",
+                success: function(data,status){
+                    addToGraph(data);
+                }
+            }).fail(
+                function(){
+                //falha
+                }
+            );
+        }
+
+        //inclui no grafo de relacionamento
+        function addToGraph(data){
+            //adiciona dados no grafo
+            addToNetWork(data);
+            startCanvas();
+        }
+
+        function startCanvas(){
+            var container = document.getElementById('mynetwork');
+            createNetWork(container);
+        }
+
+        window.onload = function() {
+          findFriends();
+        };
+
+    </script>
 </head>
-<body>
-Amigos
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <div th:replace="~{../templates/fragments/menuEsquerdo :: menuEsquerdo}" ></div>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+            <div th:replace="~{../templates/fragments/header :: header}"></div>
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                <!-- Page Heading -->
+
+                <h1 class="h3 mb-1 text-gray-800">Dados do usuario</h1>
+                <p class="mb-4">Rede de amigos:</p>
+                <!-- Content Row -->
+                <div class="row">
+                    <!-- Border Left Utilities -->
+                    <div class="col-lg-12">
+                        <div class="card mb-8 py-6 border-left-primary">
+                            <div class="card-body">
+                                <label th:text="${user.name}"></label>
+                                <hr/>
+                                <label >Procurar um amigo.</label>
+
+                                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group">
+                                        <input id="emailTxt" type="text" class="form-control bg-light border-0 small" placeholder="procure por email..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button" onclick="findEmail();">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div id="result" >
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card mb-8 py-6 border-left-orange">
+                            <div id="mynetwork" class="col-sm m-3 "></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+        <div th:replace="~{../templates/fragments/footer :: footer}"></div>
+    </div>
+    <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="../js/sb-admin-2.min.js"></script>
+
+
+
 </body>
 </html>

@@ -23,7 +23,7 @@ public class FriendListEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<UserEntity> friends;
 
     public UserEntity getUser() {
@@ -32,5 +32,21 @@ public class FriendListEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public List<UserEntity> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<UserEntity> friends) {
+        this.friends = friends;
     }
 }

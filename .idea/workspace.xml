@@ -5,34 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c77777-87c8-4dd5-a368-c9b6e5114df8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/config/SocialConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FacebookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/FriendListEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/FriendsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleConnectionSignUp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleSignInAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/amigos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/config/MailConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/MessageEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/model/FriendList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/FriendListRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/MessageRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/lib/visjs/graph.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/lib/visjs/vis-network.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/lib/visjs/vis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/confirmacao.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/MindStructureApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/MindStructureApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FacebookController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/model/UserModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/model/UserModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/SecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SecurityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SecurityServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/FriendListEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/FriendListEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/FriendsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/FriendsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleConnectionSignUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleConnectionSignUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleSignInAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleSignInAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/menuEsquerdo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/menuEsquerdo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/amigos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/amigos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -213,62 +214,32 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleConnectionSignUp.java</url>
-          <line>15</line>
+          <line>17</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleConnectionSignUp.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleSignInAdapter.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleConnectionSignUp.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/security/SimpleConnectionSignUp.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/controllers/UserController.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java</url>
-          <line>59</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/controllers/HomeController.java</url>
+          <line>18</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/services/UserServiceImpl.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java</url>
           <line>62</line>
-          <option name="timeStamp" value="31" />
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.util.LinkedHashMap$Entry" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="user" />

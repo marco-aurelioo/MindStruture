@@ -30,6 +30,16 @@ create table role (
     primary key (id)
 );
 
+create table message (
+    id binary not null,
+    role varchar(255),
+    from_user_id binary(255),
+    to varchar(255),
+    msg varchar(255),
+    readed bit,
+    primary key (id)
+);
+
 create table user (
     id binary not null,
     avatar_url varchar(255),
@@ -40,13 +50,19 @@ create table user (
 );
 
 create table user_roles (
-   user_id binary not null,
+    user_id binary not null,
     role_id integer not null,
     primary key (user_id, role_id)
 );
+
 alter table friend_list
    add constraint FK838n1nm0a7wvt1a9pxs0ft8kk
    foreign key (user_id)
+   references user;
+
+alter table message
+   add constraint FK3nju8asf4v72h0d7g6vgtx7p2
+   foreign key (from_user_id)
    references user;
 
 alter table friend_list_friends

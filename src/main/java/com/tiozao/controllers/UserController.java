@@ -36,16 +36,12 @@ public class UserController {
     public String registration(@ModelAttribute("user") UserModel userForm,Model model) {
         List<String> errors = new ArrayList<>();
         userValidador.validate(userForm,errors);
-
         if (!errors.isEmpty()) {
             model.addAttribute("errors",errors);
             return "register";
         }
-
         userService.save(userForm);
-
         securityService.autoLogin(userForm.getEmail(), userForm.getPassword());
-
         return "redirect:/usuario";
     }
 
@@ -61,7 +57,6 @@ public class UserController {
     @GetMapping("/usuario")
     public String getMeuCadastro(Model model){
         model.addAttribute("user", userService.getSessionUser());
-
         return "usuario";
     }
 

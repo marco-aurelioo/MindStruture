@@ -7,6 +7,7 @@ import com.tiozao.model.UserModel;
 import com.tiozao.repositories.RoleRepository;
 import com.tiozao.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,7 +31,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserModel user) {
-
         UserEntity entity = new UserEntity();
         entity.setName(user.getName());
         entity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         entity.setEmail(user.getEmail());
         entity.setAvatarUrl(user.getAvatarUrl());
         RoleEntity role = roleRepository.findByRole("USER");
-        if(role != null) {
+        if (role != null) {
             entity.getRoles().add(role);
         }
         userRepository.save(entity);
@@ -52,29 +52,34 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserModel getSessionUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(principal instanceof UserDetails) {
+        if (principal instanceof UserDetails) {
             return convertPrincipalToUserModel((UserDetails) principal);//
-        }else{
-            String[] face = ((String) principal).split("\\|");
-            UserEntity byEmail = userRepository.findByEmail(face[0]);
+        } else {
+            UserEntity byEmail = userRepository.findByEmail((String) principal);
             UserModel user = new UserModel();
             user.setAvatarUrl(byEmail.getAvatarUrl());
-            user.setName(face[1]);
+            user.setEmail(byEmail.getEmail());
+            user.setName(byEmail.getName());
             return user;
         }
-
     }
 
     @Override
     public List<String> updateUser(UserModel userForm) {
         List<String> errors = new ArrayList<String>();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserEntity user = userRepository.findByEmail(((UserDetails) principal).getUsername());
+        UserEntity user = null;
+        if (principal instanceof UserDetails) {
+            user = userRepository.findByEmail(((UserDetails) principal).getUsername());
+        } else {
+            String[] face = ((String) principal).split("\\|");
+            user = userRepository.findByEmail(face[0]);
+        }
         user.setAvatarUrl(userForm.getAvatarUrl());
         user.setName(userForm.getName());
         try {
             userRepository.save(user);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             errors.add("Erro ao tentar salvar os dados.(usuario)");
         }
@@ -84,14 +89,14 @@ public class UserServiceImpl implements UserService {
 
     private UserModel convertPrincipalToUserModel(UserDetails principal) {
         UserModel retorno = new UserModel();
-        if(principal == null)
+        if (principal == null)
             return retorno;
         UserEntity user = userRepository.findByEmail(principal.getUsername());
         retorno.setName(user.getName());
         retorno.setEmail(user.getEmail());
-        if(user.getAvatarUrl() != null) {
+        if (user.getAvatarUrl() != null) {
             retorno.setAvatarUrl(user.getAvatarUrl());
-        }else{
+        } else {
             retorno.setAvatarUrl("../img/avatarDefault.png");
         }
         return retorno;
