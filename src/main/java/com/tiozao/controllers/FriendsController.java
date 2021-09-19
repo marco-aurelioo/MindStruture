@@ -28,6 +28,7 @@ public class FriendsController {
     public String meusAmigos(Model model) {
         UserModel sessionUser = userService.getSessionUser();
         model.addAttribute("user", sessionUser);
+        model.addAttribute("msgs",friends.findMyUnreadMsgs(sessionUser));
         return "amigos";
     }
 
@@ -47,16 +48,7 @@ public class FriendsController {
         return ResponseEntity.ok("sucesso");
     }
 
-    @GetMapping("/confirmacao")
-    public String confirmacaoAmizade(Model model,
-                                     @RequestParam("from") UUID from,
-                                     @RequestParam("msgId") UUID msgId) {
-        UserModel sessionUser = userService.getSessionUser();
-        MessageEntity msg = friends.verificaConfirmacaoAmizade(msgId, from, sessionUser);
-        model.addAttribute("msg", msg);
-        model.addAttribute("user", sessionUser);
-        return "confirmacao";
-    }
+
 
     @PostMapping("/confirmacao")
     public ResponseEntity<String> confirmaAmizade(@RequestBody String msgId) {
@@ -64,6 +56,5 @@ public class FriendsController {
         friends.confirmacaoAmizade(UUID.fromString(msgId.replace("=", "")), sessionUser);
         return ResponseEntity.ok("Sucesso");
     }
-
 
 }

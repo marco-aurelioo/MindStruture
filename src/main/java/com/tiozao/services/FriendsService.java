@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,6 +40,10 @@ public class FriendsService {
 
 
         return byUser;
+    }
+
+    public List<MessageEntity> findMyUnreadMsgs(UserModel sessionUser){
+       return msgRepository.findByToAndReaded(sessionUser.getEmail(),false);
     }
 
     public void solicitacaoAmizade(String email, UserModel sessionUser) {
@@ -97,7 +102,7 @@ public class FriendsService {
             byUser.setUser(user);
         }
         if(byUser.getFriends() == null){
-            byUser.setFriends(new ArrayList<>());
+            byUser.setFriends(new HashSet<>());
         }
         byUser.getFriends().add(friend);
         repository.save(byUser);

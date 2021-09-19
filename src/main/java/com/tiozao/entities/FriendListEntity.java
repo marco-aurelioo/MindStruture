@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -24,7 +25,7 @@ public class FriendListEntity {
     private UserEntity user;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<UserEntity> friends;
+    private Set<UserEntity> friends;
 
     public UserEntity getUser() {
         return user;
@@ -42,11 +43,11 @@ public class FriendListEntity {
         this.id = id;
     }
 
-    public List<UserEntity> getFriends() {
+    public Set<UserEntity> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<UserEntity> friends) {
+    public void setFriends(Set<UserEntity> friends) {
         this.friends = friends;
     }
 }

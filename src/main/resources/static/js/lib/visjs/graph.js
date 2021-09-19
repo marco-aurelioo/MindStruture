@@ -33,20 +33,22 @@ function createNodeUser(data){
     var name = data.user.name;
     var avatar = data.user.avatarUrl;
     var id = data.user.id;
-
-    this.nodes.add({id: id, shape: 'image', label: name, image: avatar})
-
+    createNode(id,name,avatar);
     for (var key in data.friends) {
        if (data.friends.hasOwnProperty(key)) {
          var nameF = data.friends[key].name;
          var avatarF = data.friends[key].avatarUrl;
          var idF =  data.friends[key].id;
-         if(avatarF){
-            this.nodes.add({id: idF, shape: 'image', label: nameF, image: avatarF})
-         }else{
-            this.nodes.add({id: idF, shape: 'hexagon', label: nameF, image: avatarF})
-         }
+         createNode(idF,nameF,avatarF);
          this.edges.add( {from: id, to: idF});
        }
+    }
+}
+
+function createNode(idF,nameF,avatarF){
+    if(avatarF){
+        this.nodes.add({id: idF, shape: 'image', label: nameF, image: avatarF})
+    }else{
+        this.nodes.add({id: idF, shape: 'hexagon', label: nameF, image: avatarF})
     }
 }
