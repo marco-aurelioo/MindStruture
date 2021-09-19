@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b2c77777-87c8-4dd5-a368-c9b6e5114df8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/config/MailConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/config/MailConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/controllers/FriendsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/FriendListEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/entities/FriendListEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/FriendListRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/FriendListRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/repositories/MessageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tiozao/services/FriendsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tiozao/services/FriendsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/lib/visjs/graph.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/lib/visjs/graph.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/amigos.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/amigos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/menuEsquerdo.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/menuEsquerdo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
